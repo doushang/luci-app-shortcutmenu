@@ -33,7 +33,7 @@ d.rawhtml = true
 function d.cfgvalue(self, s)
 	local e = self.map:get(s, "weburl") or ' '
 	local f = self.map:get(s, "webpath") or ' '
-	return "<strong><a target=\"_blank\" href='http://"..e..""..f.."'><font color=\"red\">Open</font></a></strong>"
+	return "<input type='button' style='width:210px; border-color:Teal; text-align:center; font-weight:bold;color:Green;' value='Go' onclick=\"window.open('http://"..e..""..f.."')\"/>"
 end
 
 return m
