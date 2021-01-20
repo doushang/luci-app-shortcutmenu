@@ -1,10 +1,13 @@
 name: release luci-app-shortcutmenu
 on:
-  push:
-    branches: 
-      - master
-  watch:
-    types: started
+  # push:
+  #   branches: 
+  #     - master
+  # watch:
+  #   types: started
+    push:
+      tags:
+        - "v*"
 jobs:
   build_luci:
     runs-on: ubuntu-latest
