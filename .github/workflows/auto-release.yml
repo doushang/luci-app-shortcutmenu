@@ -81,4 +81,4 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           body: |
-            [bot] automatically publish packages compiled with the latest source code
+            automatically publish packages compiled with the latest source code
