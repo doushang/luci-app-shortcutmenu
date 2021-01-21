@@ -7,7 +7,7 @@ on:
   #   types: started
     push:
       tags:
-        - "v*"
+        - "*"
 jobs:
   build_luci:
     runs-on: ubuntu-latest
