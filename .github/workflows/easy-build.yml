@@ -1,10 +1,10 @@
 on:
   watch:
     types: started
-  push:
+  # push:
   #    Sequence of patterns matched against refs/tags
-    tags:
-    - '*' # Tag events
+    # tags:
+    # - '*' # Tag events
 
 name: Upload Release Asset
 
