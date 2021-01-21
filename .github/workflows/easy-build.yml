@@ -39,7 +39,7 @@ jobs:
           Maintainer: doushang<https://github.com/doushang/luci-app-shortcutmenu>
           Section: base
           Priority: optional
-          Description: Simple Docker manager interface
+          Description: shortcutmenu
           Source: http://github.com/doushang/luci-app-shortcutmenu
           EOF
           # cat >/tmp/luci-app-shortcutmenu/CONTROL/postinst <<EOF
@@ -50,6 +50,7 @@ jobs:
           # exit 0
           # EOF
           # chmod +x /tmp/luci-app-shortcutmenu/CONTROL/postinst
+          mkdir -p /tmp/luci-app-shortcutmenu_refs/heads
           wget -O /tmp/ipkg-build https://raw.githubusercontent.com/openwrt/openwrt/openwrt-18.06/scripts/ipkg-build && \
           chmod +x /tmp/ipkg-build && \
           /tmp/ipkg-build -o root -g root /tmp/luci-app-shortcutmenu /tmp
