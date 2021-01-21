@@ -50,7 +50,6 @@ jobs:
           # exit 0
           # EOF
           # chmod +x /tmp/luci-app-shortcutmenu/CONTROL/postinst
-          mkdir -p /tmp/luci-app-shortcutmenu_refs/heads
           wget -O /tmp/ipkg-build https://raw.githubusercontent.com/openwrt/openwrt/openwrt-18.06/scripts/ipkg-build && \
           chmod +x /tmp/ipkg-build && \
           /tmp/ipkg-build -o root -g root /tmp/luci-app-shortcutmenu /tmp
