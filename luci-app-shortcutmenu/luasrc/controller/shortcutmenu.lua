@@ -7,5 +7,5 @@ function index()
 	if not nixio.fs.access("/etc/config/shortcutmenu") then
 		return
 	end
-	entry({"admin", "services", "shortcutmenu"}, cbi("shortcutmenu"), _("Shortcutmenu"), 55).dependent = true
+	entry({"admin", "status", "shortcutmenu"}, cbi("shortcutmenu"), _("Shortcutmenu"), 55).dependent = true
 end
