@@ -34,22 +34,30 @@ jobs:
           cat >/tmp/luci-app-shortcutmenu/CONTROL/control <<EOF
           Package: luci-app-shortcutmenu
           Version: ${TAG}
-          Depends: 
+          Depends: libc
+          Source: package/doushang/luci-app-shortcutmenu
+          SourceName: luci-app-shortcutmenu
+          License: AGPL-3.0
+          Section: luci
+          Maintainer: <https://github.com/doushang/luci-app-shortcutmenu>
           Architecture: all
-          Maintainer: doushang<https://github.com/doushang/luci-app-shortcutmenu>
-          Section: base
-          Priority: optional
-          Description: shortcutmenu
-          Source: http://github.com/doushang/luci-app-shortcutmenu
+          Description:  LuCI Support for shortcutmenu
           EOF
-          # cat >/tmp/luci-app-shortcutmenu/CONTROL/postinst <<EOF
-          # #!/bin/sh
-          # if [ -z "${IPKG_INSTROOT}" ]; then
-          # ( . /etc/uci-defaults/luci-app-shortcutmenu ) && rm -f /etc/uci-defaults/luci-app-shortcutmenu
-          # fi
-          # exit 0
-          # EOF
-          # chmod +x /tmp/luci-app-shortcutmenu/CONTROL/postinst
+          cat >/tmp/luci-app-shortcutmenu/CONTROL/postinst <<EOF
+          #!/bin/sh
+          [ "${IPKG_NO_SCRIPT}" = "1" ] && exit 0
+          [ -x ${IPKG_INSTROOT}/lib/functions.sh ] || exit 0
+          . ${IPKG_INSTROOT}/lib/functions.sh
+          default_postinst $0 $@
+          EOF
+          chmod +x /tmp/luci-app-shortcutmenu/CONTROL/postinst
+          cat >/tmp/luci-app-shortcutmenu/CONTROL/prerm <<EOF
+          #!/bin/sh
+          [ -x ${IPKG_INSTROOT}/lib/functions.sh ] || exit 0
+          . ${IPKG_INSTROOT}/lib/functions.sh
+          default_prerm $0 $@
+          EOF
+          chmod +x /tmp/luci-app-shortcutmenu/CONTROL/prerm
           wget -O /tmp/ipkg-build https://raw.githubusercontent.com/openwrt/openwrt/openwrt-18.06/scripts/ipkg-build && \
           chmod +x /tmp/ipkg-build && \
           /tmp/ipkg-build -o root -g root /tmp/luci-app-shortcutmenu /tmp
