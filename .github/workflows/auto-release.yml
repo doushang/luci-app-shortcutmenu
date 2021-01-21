@@ -5,9 +5,9 @@ on:
   #     - master
   # watch:
   #   types: started
-    push:
-      tags:
-        - "v*"
+    # push:
+    #   tags:
+    #     - "v*"
 jobs:
   build_luci:
     runs-on: ubuntu-latest
